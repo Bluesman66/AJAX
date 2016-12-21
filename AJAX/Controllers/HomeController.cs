@@ -24,8 +24,7 @@ namespace AJAX.Controllers
 		{
 			return View();
 		}
-
-		[HttpPost]
+				
 		public ActionResult BookSearch(string name)
 		{
 			var allbooks = _books.Where(a => a.Author.Contains(name)).ToList();
@@ -34,6 +33,12 @@ namespace AJAX.Controllers
 				return HttpNotFound();
 			}
 			return PartialView("_BookSearch", allbooks);
+		}
+				
+		public ActionResult BestBook()
+		{
+			Book book = _books.First();
+			return PartialView("_BestBook", book);
 		}
 	}
 }

@@ -1,0 +1,12 @@
+﻿@model AJAX.Models.Book
+
+@{
+	IFormatProvider formatProvider =
+		new System.Globalization.CultureInfo("ru-RU");	
+}
+
+<table>	
+	<tr><td>Название:</td><td>@Model.Name</td></tr>
+	<tr><td>Название:</td><td>@Model.Author</td></tr>	
+	<tr><td>Цена:</td><td>@Model.Price.ToString("C", formatProvider)</td></tr>
+</table>

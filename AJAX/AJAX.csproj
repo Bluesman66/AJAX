@@ -166,6 +166,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_BookSearch.cshtml" />
+    <Content Include="Views\Home\_BestBook.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

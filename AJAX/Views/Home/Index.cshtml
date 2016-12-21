@@ -2,36 +2,19 @@
 	ViewBag.Title = "Index";
 }
 
-<script type="text/javascript">
-	function OnBegin() {
-		alert("Происходит отправка запроса");
-	}
-	function OnSuccess(data) {
-		alert("Запрос был успешно выполнен. Получены следующие данные: \n" + data);
-	}
-	function OnFailure(request, error) {
-		$("#results").html("Книги указанного автора не содержатся в базе данных.");
-	}
-	function OnComplete(request, status) {
-		alert("Статус запроса : " + status);
-	}
-</script>
-
 <div>
-	@using (Ajax.BeginForm("BookSearch", new AjaxOptions
-	{
-		UpdateTargetId = "results",
-		OnBegin = "OnBegin",
-		OnFailure = "OnFailure",
-		OnSuccess = "OnSuccess",
-		OnComplete = "OnComplete"
-	}))
+	@using (Ajax.BeginForm("BookSearch", new AjaxOptions { UpdateTargetId = "results" }))
 	{
 		<input type="text" name="name" />
 		<input type="submit" value="Поиск" />
 	}
 	<div id="results"></div>
 </div>
+<br />
+<div id="bestbook">
+	@Ajax.ActionLink("Лучшая книга", "BestBook", new AjaxOptions { UpdateTargetId = "bestbook" })
+</div>
+
 @section Scripts
 {
 	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
