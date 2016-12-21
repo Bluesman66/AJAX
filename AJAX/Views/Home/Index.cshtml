@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<string>
+
+@{
 	ViewBag.Title = "Index";
 }
 
@@ -11,9 +13,12 @@
 	<div id="results"></div>
 </div>
 <br />
-<div id="bestbook">
-	@Ajax.ActionLink("Лучшая книга", "BestBook", new AjaxOptions { UpdateTargetId = "bestbook" })
-</div>
+@foreach (string author in Model)
+{
+	<div style="margin-right:8px;float:left;">
+		@Ajax.ActionLink(author, "BookSearch", new { name = author }, new AjaxOptions { UpdateTargetId = "results" })
+	</div>
+}
 
 @section Scripts
 {

@@ -22,7 +22,8 @@ namespace AJAX.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			var authors = _books.Select(b => b.Author).Distinct();
+			return View(authors);
 		}
 				
 		public ActionResult BookSearch(string name)
