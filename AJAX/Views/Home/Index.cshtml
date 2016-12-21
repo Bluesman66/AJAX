@@ -7,15 +7,13 @@
 	{
 		UpdateTargetId = "results",
 		LoadingElementId = "loading",
-		LoadingElementDuration = 1000
+		LoadingElementDuration = 3000
 	}))
 	{
 		<input type="text" name="name" />
 		<input type="submit" value="Поиск" />
-	}
-	<div id="loading" style="display:none; color:Red; font-weight:bold;">
-		<p>Идет загрузка...</p>
-	</div>
+	}	
+	<img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" />
 	<div id="results"></div>
 </div>
 @section Scripts
