@@ -6,7 +6,7 @@
 	@using (Ajax.BeginForm("BookSearch", new AjaxOptions
 	{
 		UpdateTargetId = "results",
-		Confirm = "Выполнить AJAX-запрос?"
+		InsertionMode = InsertionMode.InsertBefore
 	}))
 	{
 		<input type="text" name="name" />
