@@ -6,14 +6,12 @@
 	@using (Ajax.BeginForm("BookSearch", new AjaxOptions
 	{
 		UpdateTargetId = "results",
-		LoadingElementId = "loading",
-		LoadingElementDuration = 3000
+		Confirm = "Выполнить AJAX-запрос?"
 	}))
 	{
 		<input type="text" name="name" />
 		<input type="submit" value="Поиск" />
 	}	
-	<img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" />
 	<div id="results"></div>
 </div>
 @section Scripts
