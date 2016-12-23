@@ -1,24 +1,26 @@
-﻿@model IEnumerable<string>
-
-@{
+﻿@{
 	ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+	function onSuccess(data) {
+		var results = $('#results'); // получаем нужный элемент
+		results.empty(); //очищаем элемент
+		for (var i = 0; i < data.length; i++) {
+			results.append('<li>' + data[i].Name + '</li>'); // добавляем данные в список
+		}
+	}
+</script>
+
 <div>
-	@using (Ajax.BeginForm("BookSearch", new AjaxOptions { UpdateTargetId = "results" }))
+	@using (Ajax.BeginForm("JsonSearch", new AjaxOptions { OnSuccess = "onSuccess" }))
 	{
 		<input type="text" name="name" />
 		<input type="submit" value="Поиск" />
 	}
-	<div id="results"></div>
 </div>
 <br />
-@foreach (string author in Model)
-{
-	<div style="margin-right:8px;float:left;">
-		@Ajax.ActionLink(author, "BookSearch", new { name = author }, new AjaxOptions { UpdateTargetId = "results" })
-	</div>
-}
+<div id="results"></div>
 
 @section Scripts
 {

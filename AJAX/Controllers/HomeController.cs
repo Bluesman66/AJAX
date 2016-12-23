@@ -22,8 +22,7 @@ namespace AJAX.Controllers
 
 		public ActionResult Index()
 		{
-			var authors = _books.Select(b => b.Author).Distinct();
-			return View(authors);
+			return View();
 		}
 				
 		public ActionResult BookSearch(string name)
@@ -40,6 +39,12 @@ namespace AJAX.Controllers
 		{
 			Book book = _books.First();
 			return PartialView("_BestBook", book);
+		}
+
+		public JsonResult JsonSearch(string name)
+		{
+			var jsondata = _books.Where(a => a.Author.Contains(name)).ToList<Book>();
+			return Json(jsondata, JsonRequestBehavior.AllowGet);
 		}
 	}
 }
