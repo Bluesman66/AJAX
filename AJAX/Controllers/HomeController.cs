@@ -34,7 +34,7 @@ namespace AJAX.Controllers
 			}
 			return PartialView("_BookSearch", allbooks);
 		}
-				
+		
 		public ActionResult BestBook()
 		{
 			Book book = _books.First();

@@ -2,27 +2,18 @@
 	ViewBag.Title = "Index";
 }
 
-<script type="text/javascript">
-	function onSuccess(data) {
-		var results = $('#results'); // получаем нужный элемент
-		results.empty(); //очищаем элемент
-		for (var i = 0; i < data.length; i++) {
-			results.append('<li>' + data[i].Name + '</li>'); // добавляем данные в список
-		}
-	}
-</script>
+<input type="text" name="name" id="search" />
+<input type='button' id="submit" value='Поиск' />
 
-<div>
-	@using (Ajax.BeginForm("JsonSearch", new AjaxOptions { OnSuccess = "onSuccess" }))
-	{
-		<input type="text" name="name" />
-		<input type="submit" value="Поиск" />
-	}
-</div>
-<br />
 <div id="results"></div>
 
-@section Scripts
-{
-	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
-}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').click(function (e) {
+            e.preventDefault();
+            var name = $('#search').val();
+            name=encodeURIComponent(name);
+            $('#results').load('@Url.Action("BookSearch", "Home")?name='+name)
+        });
+    });
+</script>
